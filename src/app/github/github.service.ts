@@ -21,12 +21,22 @@ export class GithubService {
   // }
 
   getUser(searchText): Observable<any>{             // rxjs - observable call for API
-    const url= 'http://api.github.com/search/users?q='+searchText;
+    const url= 'https://api.github.com/search/users?q='+searchText;
     return  this.http.get(url).map(
       res => {
         const data = res;
         console.log(data)
         return data;
+      }
+    )
+  }
+
+  getUserDetails(userId):Observable<any>{
+    const url  = 'https://api.github.com/users/'+userId;
+    return this.http.get(url).map(
+      res =>{
+        const user = res;
+        return user;
       }
     )
   }

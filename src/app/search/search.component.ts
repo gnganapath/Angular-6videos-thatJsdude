@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {GithubService} from '../github/github.service';
 @Component({
   selector: 'app-search',
@@ -11,7 +12,7 @@ export class SearchComponent implements OnInit {
   searchText;
   searchResult;
   searchCount;
-  constructor(private githubService:GithubService) { }
+  constructor(private router:Router , private githubService:GithubService) { }
 
   ngOnInit() {
     //this.githubService.getUser();  // // simple service level API Call  
@@ -29,4 +30,8 @@ export class SearchComponent implements OnInit {
       }
     )};
 
+
+  showUserDetails(user){
+    this.router.navigate(['user', user.login]);
+  }
 }

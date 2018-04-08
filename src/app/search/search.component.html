@@ -5,10 +5,11 @@
 
 <mat-card class="example-card"  *ngFor="let user of searchResult.items">
   <mat-card-header>
-    {{ user.login }}    
+    <mat-card-title>
+    <button  mat-button (click)="showUserDetails(user)">{{ user.login }}   </button>
+    </mat-card-title>
   </mat-card-header>
-  <img class="profile-image" mat-card-image [src]="user.avatar_url" alt="Photo of a Shiba Inu">
- 
+  <img class="profile-image" mat-card-image [src]="user.avatar_url" alt="Photo of a Shiba Inu"> 
   <mat-card-content>
     content
   </mat-card-content>

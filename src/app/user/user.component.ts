@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { GithubService } from '../github/github.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  private userDetail;
+
+  constructor( private activatedRouter:ActivatedRoute, private githubService: GithubService) { }
 
   ngOnInit() {
+    const userId = this.activatedRouter.snapshot.params['userId'];
+    console.log(userId)
+    this.githubService.getUserDetails(userId).subscribe( 
+      res =>{
+        this.userDetail = res;
+        console.log(this.userDetail)
+      }
+    )
   }
 
 }
