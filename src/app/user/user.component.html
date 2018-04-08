@@ -1,6 +1,7 @@
 <h1>User Details page</h1>
 <div *ngIf="userDetail">
-  <h4>{{userDetail.name}}</h4>
+  <h4>{{userDetail.name | uppercase}}</h4>
   <p>email : {{userDetail.email}}</p>
   <small>followers: {{userDetail.followers}}</small>
+  <p>created at:{{userDetail.created_at | date }}</p>
 </div>
